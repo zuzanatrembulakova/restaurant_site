@@ -1,10 +1,15 @@
-fetch("https://kea-alt-del.dk/t5/api/categories")
-.then(res => res.json())
-.then(createCategories)
+const modal = document.querySelector(".modal-background");
+modal.addEventListener("click", () => {
+    modal.classList.add("hide");
+});
 
-function createCategories(data){
+fetch("https://kea-alt-del.dk/t5/api/categories")
+    .then(res => res.json())
+    .then(createCategories)
+
+function createCategories(data) {
     console.log(data)
-    data.forEach(function(oneCategory){
+    data.forEach(function (oneCategory) {
         console.log(oneCategory)
 
         //create links
@@ -40,9 +45,8 @@ function getProducts() {
 
     function showdata(jsonData) {
         console.log(jsonData)
-        /*showCourses(jsonData[0])*/
         jsonData.forEach(showCourses);
-        setuparrows();
+        /*setuparrows();*/
 
     }
 }
@@ -55,33 +59,14 @@ divmap["drinks"] = document.querySelector("#course_drinks");
 divmap["sideorders"] = document.querySelector("#course_sideorders");*/
 
 function showCourses(course) {
-    const imageName = course.image; // this would be dynamic
-    const baseimg = "https://kea-alt-del.dk/t5/site/imgs/";
-    const smallImg = baseimg + "small/" + imageName + "-sm.jpg";
-
-   /* const course_id = course.id;
-    const basecourse = "https://kea-alt-del.dk/t5/api/product?id=";
-    const coursebyid = basecourse + course_id;*/
+    const smallImg = getImageName(course.image);
 
     const template = document.querySelector("template").content;
 
     var aCopy = template.cloneNode(true);
 
     aCopy.querySelector(".title").textContent = course.name;
-    aCopy.querySelector(".short_description").textContent = course.shortdescription
-
-    /*fetch(coursebyid)
-        .then(function (response) {
-            return response.json()
-
-        })
-        .then(function (data) {
-           aCopy.querySelector(".long_description").style.display = "inline"; aCopy.querySelector(".long_description").textContent = data.longdescription;
-
-            console.log(data.longdescription)
-        })*/
-
-
+    aCopy.querySelector(".short_description").textContent = course.shortdescription;
 
     if (course.discount) {
         aCopy.querySelector(".discount").style.display = "inline";
@@ -103,6 +88,23 @@ function showCourses(course) {
     }
 
     var icons = aCopy.querySelector(".icons").children;
+    setUpIcons(icons, course, false);
+    fetch(`https://kea-alt-del.dk/t5/api/product?id=${course.id}`)
+            .then(res => res.json())
+            .then((data) => {setUpIcons(icons, data, true)});
+
+    aCopy.querySelector("button").addEventListener("click", () => {
+        fetch(`https://kea-alt-del.dk/t5/api/product?id=${course.id}`)
+            .then(res => res.json())
+            .then((data) => {showDetails(data)});
+    });
+
+    /*console.log(`#${course.category}`);*/
+    document.querySelector(`#${course.category}`).appendChild(aCopy);
+    /*divmap[course.category].appendChild(aCopy)*/
+}
+
+function setUpIcons(icons, course, hasAllergens){
     if (course.vegetarian == false) {
         icons[0].style.display = "none";
     }
@@ -115,14 +117,38 @@ function showCourses(course) {
     icons[3].style.display = "none";
     icons[4].style.display = "none";
 
-    console.log(`#${course.category}`);
-   document.querySelector(`#${course.category}`).appendChild(aCopy);
-    /*divmap[course.category].appendChild(aCopy)*/
+    if (hasAllergens){
+        if (course.allergens.includes("laktose")){
+            icons[1].style.display = "inline";
+        }
+        if (course.allergens.includes("kartofler")){
+            icons[3].style.display = "inline";
+        }
+        if (course.allergens.includes("nødder")){
+            icons[4].style.display = "inline";
+        }
+    }
 }
+
+function getImageName(imageName){
+    const baseimg = "https://kea-alt-del.dk/t5/site/imgs/";
+    return baseimg + "small/" + imageName + "-sm.jpg";
+}
+
+function showDetails(data) {
+    console.log(data);
+    modal.querySelector(".modal-name").textContent = data.name;
+    modal.querySelector(".modal-sdescription").textContent = data.shortdescription;
+    modal.querySelector(".modal-ldescription").textContent = data.longdescription;
+    modal.querySelector(".modal-image").src = getImageName(data.image);
+    //...
+    modal.classList.remove("hide")
+}
+
 
 /*---ARROW BUTTONS-------------------------------------*/
 
-function setuparrows() {
+/*function setuparrows() {
     var arrowdownbtns = document.querySelectorAll("#arrow_btn");
 
     for (i = 0; i < arrowdownbtns.length; i++) {
@@ -133,21 +159,23 @@ function setuparrows() {
             }
         })();
     }
+}*/
+
+function setupclose() {
+    var closebtns = document.querySelectorAll("#close");
+
+    for (i = 0; i < arrowdownbtns.length; i++) {
+        closebtns[i].onclick = (function () {
+            var currenti = i;
+            return function () {
+                btnClick(currenti);
+            }
+        })();
+    }
 }
 
 function btnClick(index) {
-    const long_text = document.querySelectorAll("#long_description");
-    const arrow_img = document.querySelectorAll("#arrow");
-    const arrow_imgup = document.querySelectorAll("#arrow-up");
-    if (long_text[index].style.display == "") {
-        long_text[index].style.display = "block";
-        arrow_img[index].style.display = "none";
-        arrow_imgup[index].style.display = "inline";
-    } else {
-        long_text[index].style.display = "";
-        arrow_img[index].style.display = "inline";
-        arrow_imgup[index].style.display = "none";
-    }
+    modal[index].style.display = "none";
 }
 
 

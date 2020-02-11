@@ -49,10 +49,7 @@
 
             <p class="short_description">Description</p>
 
-            <button id="arrow_btn">
-                <img src="imgs/icons/arrow_sm.png" class="arrow" id="arrow">
-                <img src="imgs/icons/arrow_sm%20%E2%80%93%20up.png" class="arrow-up" id="arrow-up">
-            </button>
+
 
             <div id="long_description">
                 <p class="long_description">Description</p>
@@ -64,6 +61,7 @@
             <p class="new_price">ONLY: <span></span></p>
 
 
+
             <img src="" class="course_img">
 
             <div class="icons">
@@ -73,8 +71,26 @@
                 <img src="imgs/icons/potato_sm.png" title="Contains potatos">
                 <img src="imgs/icons/peanut_sm.png" title="Contains nuts">
             </div>
+
+             <button class="btn">READ MORE
+                <!--<img src="imgs/icons/arrow_sm.png" class="arrow" id="arrow">
+                <img src="imgs/icons/arrow_sm%20%E2%80%93%20up.png" class="arrow-up" id="arrow-up">-->
+            </button>
+
         </div>
     </template>
+
+    <div class="modal-background hide">
+        <div class="modal-content">
+            <span class="close" id="close">&times;</span>
+            <br>
+            <h3 class="modal-name">NAME</h3>
+            <p class="modal-sdescription">LONG DESCRIPTION</p>
+            <img src="" alt="" class="modal-image" />
+            <p class="modal-ldescription">LONG DESCRIPTION</p>
+            <h4 class="modal-price">PRICE</h4>
+        </div>
+    </div>
 
     <script src="script.js" defer></script>
 
