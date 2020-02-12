@@ -96,7 +96,6 @@ li {
     padding: 16px;
 
 }
-
 .menu_selected {
     font-weight: bold;
     background-color: #0a0c19;
@@ -145,7 +144,6 @@ a {
     background-color: #0a0c19A5;
     transition: .3s linear;
 }
-
 a:hover {
     text-decoration: underline;
     background-color: #0a0c19;
@@ -193,7 +191,6 @@ h3 {
 }
 
 .btn {
-
     align-self: center;
     background-color: transparent;
     font-size: 16px;
@@ -212,7 +209,6 @@ h3 {
 
 
 }
-
 .btn:hover {
     background-color: #0a0c19A5
 }
@@ -220,7 +216,6 @@ h3 {
 .hide {
     display: none;
 }
-
 .modal-background {
     position: fixed;
     z-index: 10;
@@ -230,25 +225,94 @@ h3 {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.7);
+}
+.modal-content {
+    width: 60%;
+    background-color: #E0E0E0;
+    border: 1px solid #7c1f17;
+    padding: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+}
+.modal-name{
+    grid-row: 1;
+    font-weight: bold;
+    font-size: 28px;
+    text-shadow: 0px 0px 6px rgba(150, 150, 150, 1);
+}
+.modal-sdescription{
+    grid-row: 2;
+    text-align: center;
+    font-size: 20px;
+}
+.modal-ldescription{
+    grid-row: 3;
+    text-align: justify;
+}
+.modal-image{
+    grid-row: 1 / 7;
+    grid-column: 2;
+    -webkit-box-shadow: 0px 4px 5px -2px rgba(10, 12, 25, 1);
+    -moz-box-shadow: 0px 4px 5px -2px rgba(10, 12, 25, 1);
+    box-shadow: 0px 4px 5px -2px rgba(10, 12, 25, 1);
 
 }
-
-.modal-content {
-    background-color: #fefefe;
-    border: 1px solid #7c1f17;
-    margin: 1em;
-    padding: 2em;
-
+.modal-price{
+    font-weight: bold;
+    font-size: 19px;
+    border: 2px solid black;
+    padding: 3px;
+    margin: 0px;
+    width: auto;
+    text-align: center;
+}
+.modal-discount{
+    display: none;
+    color: green;
+    font-size: 20px;
+    margin: 0;
+    margin-top: 20px;
+}
+.modal-new_price{
+    display: none;
+    color: green;
+    font-size: 25px;
+    font-weight: bold;
+    grid-column: 1;
+    justify-self: top;
+    margin: 0;
+    margin-top: 5px;
+}
+.modal-soldout{
+    display: none;
+    grid-column: 1;
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+}
+.modal-icons{
+    grid-column: 2;
+    grid-row: 7;
+    justify-self: center;
 }
 
 .close {
     color: #aaa;
-    font-size: 30px;
+    font-size: 50px;
     font-weight: bold;
     float: right;
     cursor: pointer;
-}
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
 
+
+}
 .close:hover {
     color: black;
     text-decoration: none;
@@ -260,6 +324,8 @@ h3 {
     display: none;
     z-index: 9;
     text-align: justify;
+    grid-column: 2;
+    grid-row: 1;
 }
 
 .price {
@@ -280,7 +346,6 @@ h3 {
     display: none;
     /*color: red;*/
 }
-
 .soldout_course {
     filter: grayscale(100%);
 }

@@ -140,6 +140,29 @@ function showDetails(data) {
     modal.querySelector(".modal-name").textContent = data.name;
     modal.querySelector(".modal-sdescription").textContent = data.shortdescription;
     modal.querySelector(".modal-ldescription").textContent = data.longdescription;
+
+    if(data.discount){
+        modal.querySelector(".modal-discount").style.display = "inline";
+        modal.querySelector(".modal-discount span").textContent = data.discount;
+
+        const new_price = Math.round(data.price - data.price * data.discount / 100);
+        modal.querySelector(".modal-new_price").style.display = "inline";
+        modal.querySelector(".modal-new_price span").textContent = new_price + ".00 DKK"
+    }
+
+    modal.querySelector(".modal-price").textContent = data.price + ".00 DKK";
+
+    if (data.soldout) {
+        modal.querySelector(".modal-soldout").style.display = "inline";
+        modal.querySelector(".modal-image").classList.add("soldout_course");
+    }else{
+        modal.querySelector(".modal-soldout").style.display = "none";
+        modal.querySelector(".modal-image").classList.remove("soldout_course");
+    }
+
+    var icons = modal.querySelector(".modal-icons").children;
+    setUpIcons(icons, data, true);
+
     modal.querySelector(".modal-image").src = getImageName(data.image);
     //...
     modal.classList.remove("hide")
@@ -161,7 +184,7 @@ function showDetails(data) {
     }
 }*/
 
-function setupclose() {
+/*function setupclose() {
     var closebtns = document.querySelectorAll("#close");
 
     for (i = 0; i < arrowdownbtns.length; i++) {
@@ -175,8 +198,8 @@ function setupclose() {
 }
 
 function btnClick(index) {
-    modal[index].style.display = "none";
-}
+    modal[index].classList.add("hide");
+}*/
 
 
 window.onscroll = function () {

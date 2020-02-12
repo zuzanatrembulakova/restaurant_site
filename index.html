@@ -81,15 +81,29 @@
     </template>
 
     <div class="modal-background hide">
+
         <div class="modal-content">
             <span class="close" id="close">&times;</span>
             <br>
             <h3 class="modal-name">NAME</h3>
-            <p class="modal-sdescription">LONG DESCRIPTION</p>
+            <p class="modal-soldout">SOLD OUT</p>
+            <p class="modal-sdescription">SHORT DESCRIPTION</p>
             <img src="" alt="" class="modal-image" />
             <p class="modal-ldescription">LONG DESCRIPTION</p>
             <h4 class="modal-price">PRICE</h4>
+
+            <h4 class="modal-discount">DISCOUNT: <span></span>%</h4>
+            <h4 class="modal-new_price">ONLY: <span></span></h4>
+
+            <div class="modal-icons">
+                <img src="imgs/icons/vegan_sm.png" title="Vegetarian friendly">
+                <img src="imgs/icons/lactose-intolerant_sm.png" title="Contains lactose">
+                <img src="imgs/icons/wine_sm.png" title="Contains alcohol">
+                <img src="imgs/icons/potato_sm.png" title="Contains potatos">
+                <img src="imgs/icons/peanut_sm.png" title="Contains nuts">
+            </div>
         </div>
+
     </div>
 
     <script src="script.js" defer></script>
