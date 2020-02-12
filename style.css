@@ -38,7 +38,6 @@ h1 {
     margin-right: auto;
     grid-column: 2;
 }
-
 .logo {
     padding: 20px;
     filter: invert(100%);
@@ -46,7 +45,6 @@ h1 {
     grid-column: 1;
 
 }
-
 .some {
     /*float: right;*/
     grid-column: 3;
@@ -66,11 +64,9 @@ nav {
     box-shadow: 0px 3px 19px 6px rgba(0, 0, 0, 0.81);
     z-index: 10;
 }
-
 #navbar {
     grid-column: 1 / 4;
 }
-
 .sticky {
     position: fixed;
     top: 0;
@@ -81,8 +77,8 @@ ul {
     display: flex;
     margin-left: auto;
     margin-right: auto;
+    padding: 0;
 }
-
 li {
     list-style: none;
     margin: 0 2vw;
@@ -94,16 +90,13 @@ li {
 .menu_other {
     text-align: center;
     padding: 16px;
-
 }
-
 .menu_selected {
     font-weight: bold;
     background-color: #0a0c19;
     color: white;
     text-shadow: 1px 1px 1px black;
 }
-
 .menu_other:hover {
     text-shadow: 1px 1px 1px grey;
 }
@@ -124,7 +117,6 @@ li {
     display: flex;
     align-items: center;
 }
-
 .submenu {
     margin-left: auto;
     margin-right: auto;
@@ -137,7 +129,6 @@ a {
     font-size: 30px;
     font-weight: 1000;
     text-decoration: none;
-    width: 230px;
     height: 40px;
     padding: 10px;
     border: 5px solid white;
@@ -145,7 +136,6 @@ a {
     background-color: #0a0c19A5;
     transition: .3s linear;
 }
-
 a:hover {
     text-decoration: underline;
     background-color: #0a0c19;
@@ -158,7 +148,6 @@ section {
     grid-gap: 2rem;
     padding: 30px;
 }
-
 h2 {
     background-color: #0a0c19;
     color: white;
@@ -171,10 +160,10 @@ h2 {
 
 }
 
-h3 {
+.title {
+    height: 30px;
     text-align: center;
 }
-
 .course {
     display: flex;
     flex-flow: column;
@@ -186,10 +175,10 @@ h3 {
     box-shadow: 0px 3px 8px 2px rgba(0, 0, 0, 0.75);
     padding: 15px;
 }
-
 .short_description {
     grid-row: 2;
     text-align: center;
+    height: 30px;
 }
 
 .btn {
@@ -204,6 +193,7 @@ h3 {
     font-weight: 900;
     cursor: pointer;
     border: none;
+    margin-bottom: 10px;
 
     -webkit-box-shadow: 0px 4px 5px -2px rgba(10, 12, 25, 1);
     -moz-box-shadow: 0px 4px 5px -2px rgba(10, 12, 25, 1);
@@ -211,7 +201,6 @@ h3 {
 
 
 }
-
 .btn:hover {
     background-color: #0a0c19A5
 }
@@ -230,7 +219,6 @@ h3 {
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.7);
 }
-
 .modal-content {
     width: 60%;
     background-color: #E0E0E0;
@@ -244,25 +232,21 @@ h3 {
     grid-template-columns: 1fr 1fr;
     column-gap: 20px;
 }
-
 .modal-name {
     grid-row: 1;
     font-weight: bold;
     font-size: 28px;
     text-shadow: 0px 0px 6px rgba(150, 150, 150, 1);
 }
-
 .modal-sdescription {
     grid-row: 2;
     text-align: center;
     font-size: 20px;
 }
-
 .modal-ldescription {
     grid-row: 3;
     text-align: justify;
 }
-
 .modal-image {
     grid-row: 1 / 7;
     grid-column: 2;
@@ -271,7 +255,6 @@ h3 {
     box-shadow: 0px 4px 5px -2px rgba(10, 12, 25, 1);
 
 }
-
 .modal-price {
     font-weight: bold;
     font-size: 19px;
@@ -281,7 +264,6 @@ h3 {
     width: auto;
     text-align: center;
 }
-
 .modal-discount {
     display: none;
     color: green;
@@ -289,7 +271,6 @@ h3 {
     margin: 0;
     margin-top: 20px;
 }
-
 .modal-new_price {
     display: none;
     color: green;
@@ -300,7 +281,6 @@ h3 {
     margin: 0;
     margin-top: 5px;
 }
-
 .modal-soldout {
     display: none;
     grid-column: 1;
@@ -308,7 +288,6 @@ h3 {
     text-align: center;
     font-size: 30px;
 }
-
 .modal-icons {
     grid-column: 2;
     grid-row: 7;
@@ -328,7 +307,6 @@ h3 {
 
 
 }
-
 .close:hover {
     color: black;
     text-decoration: none;
@@ -353,18 +331,25 @@ h3 {
     padding: 2px;
     margin: 0px;
     margin-bottom: 20px;
+    height: 20px;
 }
 
 .soldout {
     text-align: center;
     font-weight: bold;
     font-size: 30px;
+    height: 20px;
     display: none;
     /*color: red;*/
+    margin: 10px;
 }
-
 .soldout_course {
     filter: grayscale(100%);
+}
+
+.course_img{
+    max-height: 270px;
+    object-fit: contain;
 }
 
 .discount,
@@ -375,11 +360,13 @@ h3 {
     color: green;
     display: none;
     font-size: 25px;
+    margin: 10px;
 }
 
 .icons {
     /*margin-left: 45px;*/
     align-self: center;
+    height: 30px;
 }
 
 img {
@@ -417,8 +404,12 @@ img {
 
     ul {
         display: flex;
+        font-size: 14px;
         margin-left: 0;
-        margin-right: 0;
+    }
+
+    li {
+        margin: 0;
     }
 
     .submenu {
