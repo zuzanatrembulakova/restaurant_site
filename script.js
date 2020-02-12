@@ -107,10 +107,15 @@ function showCourses(course) {
 function setUpIcons(icons, course, hasAllergens){
     if (course.vegetarian == false) {
         icons[0].style.display = "none";
+    }else{
+        icons[0].style.display = "inline";
     }
 
     if (course.alcohol == 0) {
         icons[2].style.display = "none";
+    }else{
+        icons[2].style.display = "inline";
+
     }
 
     icons[1].style.display = "none";
@@ -147,7 +152,10 @@ function showDetails(data) {
 
         const new_price = Math.round(data.price - data.price * data.discount / 100);
         modal.querySelector(".modal-new_price").style.display = "inline";
-        modal.querySelector(".modal-new_price span").textContent = new_price + ".00 DKK"
+        modal.querySelector(".modal-new_price span").textContent = new_price + ".00 DKK";
+    }else{
+        modal.querySelector(".modal-discount").style.display = "none";
+        modal.querySelector(".modal-new_price").style.display = "none";
     }
 
     modal.querySelector(".modal-price").textContent = data.price + ".00 DKK";
